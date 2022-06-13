@@ -1,6 +1,10 @@
 class Api::ArtistsController < ApplicationController
     before_action :set_artist, only: [:show, :update, :destroy]
 
+    def everything
+      render json: {songs: Song.all, artist: Artist.all}
+    end
+
     def index
       render json: Artist.all
     end
@@ -9,7 +13,8 @@ class Api::ArtistsController < ApplicationController
     # setUsers(res.data) res.data is Artist.all result
 
     def show
-        render json: @artist
+        # render json: @artist
+        render json: {artist: @artist, songs: @artist.songs}
     end
 
     def create
