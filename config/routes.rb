@@ -9,5 +9,9 @@ Rails.application.routes.draw do
     post '/artists', to: 'artists#create' # create 1 artist
     put '/artists/:id', to: 'artists#update' # update 1 artist
     delete '/artists/:id', to: 'artists#destroy' # destroy 1 artist
+
+    get 'artists/:artist_id/songs', to: 'songs#index'  # get all songs for a given artists
+    get 'artists/:artist_id/songs/:id', to: 'songs#show'  # get 1 song for a given artists
+  
   end
 end
